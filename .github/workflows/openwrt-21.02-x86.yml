@@ -24,7 +24,7 @@ env:
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/x86/openwrt-21.02/.config
-  DIY_P1_SH: diy-part1.sh
+  DIY_P1_SH: diy-part3.sh
   DIY_P2_SH: diy-part4.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
@@ -73,15 +73,6 @@ jobs:
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
-
-    - name: delete package
-      id: delete
-      run: |
-        cd openwrt
-        sudo rm -rf feeds/luci/applications/luci-app-smartdns
-        sudo rm -rf package/feeds/luci/luci-app-smartdns
-        sudo rm -rf feeds/packages/net/smartdns
-        sudo rm -rf package/feeds/packages/smartdns
 
     - name: Load custom configuration
       run: |
