@@ -20,9 +20,3 @@ echo 'src-git passwall1 https://github.com/xiaorouji/openwrt-passwall.git;luci' 
 
 svn co https://github.com/kenzok8/small-package/trunk/redsocks2 package/diy/redsocks2
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/diy/luci-app-openclash
-svn co https://github.com/kenzok8/small-package/trunk/luci-app-smartdns package/diy/luci-app-smartdns
-svn co https://github.com/kenzok8/small-package/trunk/smartdns package/diy/smartdns
-# svn co https://github.com/kenzok8/small-package/trunk/ipt2socks package/diy/ipt2socks
-# svn co https://github.com/kenzok8/small-package/trunk/microsocks package/diy/microsocks
-# svn co https://github.com/kenzok8/small-package/trunk/dns2socks package/diy/dns2socks
-# svn co https://github.com/kenzok8/small-package/trunk/pdnsd-alt package/diy/pdnsd-alt
