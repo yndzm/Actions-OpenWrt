@@ -13,8 +13,8 @@ name: Lienol-router-ac2100
 on:
  # repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 0 20 * * *
+   # schedule:
+    #  - cron: 0 20 * * *
   repository_dispatch:
     inputs:
       ssh:
