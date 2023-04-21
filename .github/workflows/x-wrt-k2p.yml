@@ -77,15 +77,6 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: delete package
-      id: delete
-      run: |
-        cd openwrt
-        sudo rm -rf feeds/luci/applications/luci-app-smartdns
-        sudo rm -rf package/feeds/luci/luci-app-smartdns
-        sudo rm -rf feeds/packages/net/smartdns
-        sudo rm -rf package/feeds/packages/smartdns
-
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
