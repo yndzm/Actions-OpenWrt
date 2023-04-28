@@ -1,0 +1,44 @@
+From b091dedde6fd74d660fa54e78d8bf541193abc7d Mon Sep 17 00:00:00 2001
+From: Tianling Shen <cnsztl@immortalwrt.org>
+Date: Wed, 9 Mar 2022 10:35:04 +0800
+Subject: [PATCH] kernel/modules: add kmod-inet-diag package
+
+Signed-off-by: Tianling Shen <cnsztl@immortalwrt.org>
+(cherry picked from commit 41d8f0e982079790d9bfe32743278f6c17a633f8)
+---
+ package/kernel/linux/modules/netsupport.mk | 25 ++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/package/kernel/linux/modules/netsupport.mk b/package/kernel/linux/modules/netsupport.mk
+index 454d3e45191..2b25942b7f7 100644
+--- a/package/kernel/linux/modules/netsupport.mk
++++ b/package/kernel/linux/modules/netsupport.mk
+@@ -1300,3 +1300,28 @@ define KernelPackage/netlink-diag/description
+ endef
+ 
+ $(eval $(call KernelPackage,netlink-diag))
++
++
++define KernelPackage/inet-diag
++  SUBMENU:=$(NETWORK_SUPPORT_MENU)
++  TITLE:=INET diag support for ss utility
++  KCONFIG:= \
++	CONFIG_INET_DIAG \
++	CONFIG_INET_TCP_DIAG \
++	CONFIG_INET_UDP_DIAG \
++	CONFIG_INET_RAW_DIAG \
++	CONFIG_INET_DIAG_DESTROY=n
++  FILES:= \
++	$(LINUX_DIR)/net/ipv4/inet_diag.ko \
++	$(LINUX_DIR)/net/ipv4/tcp_diag.ko \
++	$(LINUX_DIR)/net/ipv4/udp_diag.ko \
++	$(LINUX_DIR)/net/ipv4/raw_diag.ko
++  AUTOLOAD:=$(call AutoLoad,31,inet_diag tcp_diag udp_diag raw_diag)
++endef
++
++define KernelPackage/inet-diag/description
++Support for INET (TCP, DCCP, etc) socket monitoring interface used by
++native Linux tools such as ss.
++endef
++
++$(eval $(call KernelPackage,inet-diag))

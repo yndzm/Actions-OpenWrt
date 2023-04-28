@@ -1,0 +1,35 @@
+From f7ae08f19944302d3a104cabcf8d9fcc81aabe6c Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Mon, 6 Apr 2020 19:15:58 -0700
+Subject: [PATCH] kmod: add netlink-diag package
+
+This is used by the ss utility from iproute2.
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ package/kernel/linux/modules/netsupport.mk | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/package/kernel/linux/modules/netsupport.mk b/package/kernel/linux/modules/netsupport.mk
+index d74df18c6a0..d0d6aae5224 100644
+--- a/package/kernel/linux/modules/netsupport.mk
++++ b/package/kernel/linux/modules/netsupport.mk
+@@ -1238,3 +1238,18 @@ define KernelPackage/macsec/description
+ endef
+ 
+ $(eval $(call KernelPackage,macsec))
++
++
++define KernelPackage/netlink-diag
++  SUBMENU:=$(NETWORK_SUPPORT_MENU)
++  TITLE:=Netlink diag support for ss utility
++  KCONFIG:=CONFIG_NETLINK_DIAG
++  FILES:=$(LINUX_DIR)/net/netlink/netlink_diag.ko
++  AUTOLOAD:=$(call AutoLoad,31,netlink-diag)
++endef
++
++define KernelPackage/netlink-diag/description
++ Netlink diag is a module made for use with iproute2's ss utility
++endef
++
++$(eval $(call KernelPackage,netlink-diag))

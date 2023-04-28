@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: k2p_x-wrt_master
+name: k2p_openwrt-19.07
 
 on:
  # repository_dispatch:
@@ -23,13 +23,13 @@ on:
         default: 'false'
 
 env:
-  REPO_URL: https://github.com/x-wrt/x-wrt.git
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_BRANCH: openwrt-19.07
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/k2p/.config
-  DIY_P1_SH: diy-part10.sh
-  DIY_P2_SH: diy-part10.sh
-  UPLOAD_BIN_DIR: false
+  DIY_P1_SH: diy-part7.sh
+  DIY_P2_SH: diy-part6.sh
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
@@ -50,7 +50,8 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-1804)
+        sudo -E apt-get -qq install $(curl -fsSL github.com/sdhz151/Actions-OpenWrt/raw/main/update)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
@@ -91,6 +92,12 @@ jobs:
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
+    - name: Install libpam
+      run: cd openwrt && ./scripts/feeds install libpam
+
+    - name: Install golang
+      run: cd openwrt && rm -rf feeds/packages/lang/golang && svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
 
     - name: Download package
       id: package
