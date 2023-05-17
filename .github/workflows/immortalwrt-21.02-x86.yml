@@ -13,8 +13,8 @@ name: X86_immortalwrt-21.02
 on:
  # repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 0 16 * * *
+#  schedule:
+#    - cron: 0 16 * * *
   repository_dispatch:
     inputs:
       ssh:
