@@ -13,8 +13,8 @@ name: X86_x-wrt_master
 on:
  # repository_dispatch:
   workflow_dispatch:
-#  schedule:
-#    - cron: 0 21 * * *
+  schedule:
+    - cron: 0 21 * * *
   repository_dispatch:
     inputs:
       ssh:
