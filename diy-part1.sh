@@ -24,6 +24,7 @@ svn co https://github.com/kenzok8/small-package/trunk/luci-app-smartdns package/
 svn co https://github.com/kenzok8/small-package/trunk/smartdns package/diy/smartdns
 svn co https://github.com/kenzok8/small-package/trunk/luci-app-mosdns package/diy/luci-app-mosdns
 svn co https://github.com/kenzok8/small-package/trunk/mosdns package/diy/mosdns
+svn co https://github.com/kenzok8/small-package/trunk/v2dat package/diy/v2dat
 # svn co https://github.com/kenzok8/small-package/trunk/ipt2socks package/diy/ipt2socks
 # svn co https://github.com/kenzok8/small-package/trunk/microsocks package/diy/microsocks
 # svn co https://github.com/kenzok8/small-package/trunk/dns2socks package/diy/dns2socks
