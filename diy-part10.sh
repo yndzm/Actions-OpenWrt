@@ -15,3 +15,6 @@
 
 # Add a feed source
 
+svn co https://github.com/kenzok8/small-package/trunk/luci-app-mosdns package/diy/luci-app-mosdns
+svn co https://github.com/kenzok8/small-package/trunk/mosdns package/diy/mosdns
+svn co https://github.com/kenzok8/small-package/trunk/v2dat package/diy/v2dat
