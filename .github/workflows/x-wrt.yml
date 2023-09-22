@@ -81,6 +81,8 @@ jobs:
       id: delete
       run: |
         cd openwrt
+        git config --global user.email "sdhz@gmail.com"
+        git config --global user.name "sdhz"
         sudo rm -rf feeds/luci/applications/luci-app-smartdns
         sudo rm -rf package/feeds/luci/luci-app-smartdns
         sudo rm -rf feeds/packages/net/smartdns
