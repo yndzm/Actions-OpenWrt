@@ -81,15 +81,12 @@ jobs:
       id: delete
       run: |
         cd openwrt
-        git config --global user.email "sdhz@gmail.com"
-        git config --global user.name "sdhz"
         sudo rm -rf feeds/luci/applications/luci-app-smartdns
         sudo rm -rf package/feeds/luci/luci-app-smartdns
         sudo rm -rf feeds/packages/net/smartdns
         sudo rm -rf package/feeds/packages/smartdns
-        cd feeds/packages/lang/golang
-        sudo git revert d9a9995
-        sudo git revert a80af7e
+        sudo rm -rf feeds/packages/lang/golang
+        svn co https://github.com/openwrt/packages/branches/openwrt-23.05/lang/golang feeds/packages/lang/golang
 
     - name: Load custom configuration
       run: |
