@@ -1,0 +1,32 @@
+From f73db3798f4256e9f02d006f4a2c63796a969bc2 Mon Sep 17 00:00:00 2001
+From: root <root@TECHNOVM4321H1CC4314.vps.fish>
+Date: Thu, 28 Sep 2023 20:03:30 +0800
+Subject: [PATCH] Revert "golang: Update to 1.21.1"
+
+This reverts commit 41c5a695dddbcf3f5e1dfa4e489c26e9963a4b35.
+---
+ lang/golang/golang/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lang/golang/golang/Makefile b/lang/golang/golang/Makefile
+index e91f346541ef3..1022a645674ad 100644
+--- a/lang/golang/golang/Makefile
++++ b/lang/golang/golang/Makefile
+@@ -8,7 +8,7 @@
+ include $(TOPDIR)/rules.mk
+ 
+ GO_VERSION_MAJOR_MINOR:=1.21
+-GO_VERSION_PATCH:=1
++GO_VERSION_PATCH:=0
+ 
+ PKG_NAME:=golang
+ PKG_VERSION:=$(GO_VERSION_MAJOR_MINOR)$(if $(GO_VERSION_PATCH),.$(GO_VERSION_PATCH))
+@@ -20,7 +20,7 @@ GO_SOURCE_URLS:=https://dl.google.com/go/ \
+ 
+ PKG_SOURCE:=go$(PKG_VERSION).src.tar.gz
+ PKG_SOURCE_URL:=$(GO_SOURCE_URLS)
+-PKG_HASH:=bfa36bf75e9a1e9cbbdb9abcf9d1707e479bd3a07880a8ae3564caee5711cb99
++PKG_HASH:=818d46ede85682dd551ad378ef37a4d247006f12ec59b5b755601d2ce114369a
+ 
+ PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
+ PKG_LICENSE:=BSD-3-Clause
