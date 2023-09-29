@@ -5,18 +5,18 @@ Subject: [PATCH] Revert "golang: Update to 1.21.0, remove patch"
 
 This reverts commit 29ae219a23ef75cc8b307e9b3f822f37b3ae25d4.
 ---
- lang/golang/golang-compiler.mk                |  3 +-
- lang/golang/golang-package.mk                 |  3 +-
- lang/golang/golang-values.mk                  |  3 +-
- lang/golang/golang/Makefile                   |  9 ++--
+ feeds/packages/lang/golang/golang-compiler.mk                |  3 +-
+ feeds/packages/lang/golang/golang-package.mk                 |  3 +-
+ feeds/packages/lang/golang/golang-values.mk                  |  3 +-
+ feeds/packages/lang/golang/golang/Makefile                   |  9 ++--
  ...-ARM-ARM64-only-if-gold-is-available.patch | 48 +++++++++++++++++++
  5 files changed, 55 insertions(+), 11 deletions(-)
- create mode 100644 lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch
+ create mode 100644 feeds/packages/lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch
 
-diff --git a/lang/golang/golang-compiler.mk b/lang/golang/golang-compiler.mk
+diff --git a/feeds/packages/lang/golang/golang-compiler.mk b/feeds/packages/lang/golang/golang-compiler.mk
 index 50cc44905165c8..144f2a4af76951 100644
---- a/lang/golang/golang-compiler.mk
-+++ b/lang/golang/golang-compiler.mk
+--- a/feeds/packages/lang/golang/golang-compiler.mk
++++ b/feeds/packages/lang/golang/golang-compiler.mk
 @@ -60,10 +60,9 @@ define GoCompiler/Default/Install/Bin
  
  	$(call GoCompiler/Default/Install/install-share-data,$(1),$(2),$(3),api)
@@ -29,10 +29,10 @@ index 50cc44905165c8..144f2a4af76951 100644
  		if [ -f "$(1)/$$$$file" ]; then \
  			$(INSTALL_DATA) -p "$(1)/$$$$file" "$(2)/share/go-$(3)/" ; \
  		fi ; \
-diff --git a/lang/golang/golang-package.mk b/lang/golang/golang-package.mk
+diff --git a/feeds/packages/lang/golang/golang-package.mk b/feeds/packages/lang/golang/golang-package.mk
 index cc00505368c7c5..4f164c4c124df3 100644
---- a/lang/golang/golang-package.mk
-+++ b/lang/golang/golang-package.mk
+--- a/feeds/packages/lang/golang/golang-package.mk
++++ b/feeds/packages/lang/golang/golang-package.mk
 @@ -215,8 +215,7 @@ GO_PKG_BUILD_VARS= \
  	GOPATH="$(GO_PKG_BUILD_DIR)" \
  	GOCACHE="$(GO_BUILD_CACHE_DIR)" \
@@ -43,10 +43,10 @@ index cc00505368c7c5..4f164c4c124df3 100644
  
  GO_PKG_VARS= \
  	$(GO_PKG_TARGET_VARS) \
-diff --git a/lang/golang/golang-values.mk b/lang/golang/golang-values.mk
+diff --git a/feeds/packages/lang/golang/golang-values.mk b/feeds/packages/lang/golang/golang-values.mk
 index 1584d22fc8090e..469629b7e3226c 100644
---- a/lang/golang/golang-values.mk
-+++ b/lang/golang/golang-values.mk
+--- a/feeds/packages/lang/golang/golang-values.mk
++++ b/feeds/packages/lang/golang/golang-values.mk
 @@ -29,7 +29,6 @@ unexport \
    GOOS \
    GOPATH \
@@ -64,10 +64,10 @@ index 1584d22fc8090e..469629b7e3226c 100644
  
  # From https://go.dev/src/cmd/go/internal/work/init.go
  go_pie_install_suffix=$(if $(filter $(1),aix_ppc64 windows_386 windows_amd64 windows_arm windows_arm64),,shared)
-diff --git a/lang/golang/golang/Makefile b/lang/golang/golang/Makefile
+diff --git a/feeds/packages/lang/golang/golang/Makefile b/feeds/packages/lang/golang/golang/Makefile
 index 1022a645674ad8..0d89cea9025369 100644
---- a/lang/golang/golang/Makefile
-+++ b/lang/golang/golang/Makefile
+--- a/feeds/packages/lang/golang/golang/Makefile
++++ b/feeds/packages/lang/golang/golang/Makefile
 @@ -7,8 +7,8 @@
  
  include $(TOPDIR)/rules.mk
@@ -105,11 +105,11 @@ index 1022a645674ad8..0d89cea9025369 100644
  	s/defaultGOMIPS = `[^`]*`/defaultGOMIPS = `$(or $(GO_MIPS),hardfloat)`/; \
  	s/defaultGOMIPS64 = `[^`]*`/defaultGOMIPS64 = `$(or $(GO_MIPS64),hardfloat)`/; \
  	s/defaultGOPPC64 = `[^`]*`/defaultGOPPC64 = `$(or $(GO_PPC64),power8)`/;
-diff --git a/lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch b/lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch
+diff --git a/feeds/packages/lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch b/feeds/packages/lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch
 new file mode 100644
 index 00000000000000..aecf5309f76595
 --- /dev/null
-+++ b/lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch
++++ b/feeds/packages/lang/golang/golang/patches/001-cmd-link-use-gold-on-ARM-ARM64-only-if-gold-is-available.patch
 @@ -0,0 +1,48 @@
 +From 5ccf9f47bf4f5ba53e0ab7338a7fd4626714cfb2 Mon Sep 17 00:00:00 2001
 +From: Jeffery To <jeffery.to@gmail.com>
