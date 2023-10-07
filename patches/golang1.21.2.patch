@@ -1,20 +1,17 @@
-From a8374204bbf5c111f8492995560088a4c399dca4 Mon Sep 17 00:00:00 2001
-From: Jeffery To <jeffery.to@gmail.com>
-Date: Sat, 7 Oct 2023 20:04:12 +0800
-Subject: [PATCH] golang: Update to 1.21.2
+From e9c73c54130004361ea763a7dcdf96e7b314ab4d Mon Sep 17 00:00:00 2001
+From: root <root@TECHNOVM4321H1CC4314.vps.fish>
+Date: Sun, 8 Oct 2023 06:45:59 +0800
+Subject: [PATCH] Revert "golang: Update to 1.21.2"
 
-Includes fix for CVE-2023-39323 (cmd/go: line directives allows
-arbitrary execution during build).
-
-Signed-off-by: Jeffery To <jeffery.to@gmail.com>
+This reverts commit da0a243e0f06bfd131b8d6d36cab4f5be288411c.
 ---
- feeds/packages/lang/golang/golang/Makefile | 4 ++--
+ lang/golang/golang/Makefile | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/feeds/packages/lang/golang/golang/Makefile b/feeds/packages/lang/golang/golang/Makefile
-index e91f346541ef3..e6a6448f1ae0f 100644
---- a/feeds/packages/lang/golang/golang/Makefile
-+++ b/feeds/packages/lang/golang/golang/Makefile
+diff --git a/lang/golang/golang/Makefile b/lang/golang/golang/Makefile
+index e6a6448f1ae0f..e91f346541ef3 100644
+--- a/lang/golang/golang/Makefile
++++ b/lang/golang/golang/Makefile
 @@ -8,7 +8,7 @@
  include $(TOPDIR)/rules.mk
  
@@ -30,7 +27,6 @@ index e91f346541ef3..e6a6448f1ae0f 100644
  PKG_SOURCE_URL:=$(GO_SOURCE_URLS)
 -PKG_HASH:=45e59de173baec39481854490d665b726cec3e5b159f6b4172e5ec7780b2c201
 +PKG_HASH:=bfa36bf75e9a1e9cbbdb9abcf9d1707e479bd3a07880a8ae3564caee5711cb99
-
  
  PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
  PKG_LICENSE:=BSD-3-Clause
