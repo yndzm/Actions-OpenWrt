@@ -5,13 +5,13 @@ Subject: [PATCH] Revert "golang: Update to 1.21.2"
 
 This reverts commit da0a243e0f06bfd131b8d6d36cab4f5be288411c.
 ---
- lang/golang/golang/Makefile | 4 ++--
+ feeds/packages/lang/golang/golang/Makefile | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/lang/golang/golang/Makefile b/lang/golang/golang/Makefile
+diff --git a/feeds/packages/lang/golang/golang/Makefile b/feeds/packages/lang/golang/golang/Makefile
 index e6a6448f1ae0f..e91f346541ef3 100644
---- a/lang/golang/golang/Makefile
-+++ b/lang/golang/golang/Makefile
+--- a/feeds/packages/lang/golang/golang/Makefile
++++ b/feeds/packages/lang/golang/golang/Makefile
 @@ -8,7 +8,7 @@
  include $(TOPDIR)/rules.mk
  
