@@ -1,0 +1,36 @@
+From a8374204bbf5c111f8492995560088a4c399dca4 Mon Sep 17 00:00:00 2001
+From: Jeffery To <jeffery.to@gmail.com>
+Date: Sat, 7 Oct 2023 20:04:12 +0800
+Subject: [PATCH] golang: Update to 1.21.2
+
+Includes fix for CVE-2023-39323 (cmd/go: line directives allows
+arbitrary execution during build).
+
+Signed-off-by: Jeffery To <jeffery.to@gmail.com>
+---
+ feeds/packages/lang/golang/golang/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/feeds/packages/lang/golang/golang/Makefile b/feeds/packages/lang/golang/golang/Makefile
+index e91f346541ef3..e6a6448f1ae0f 100644
+--- a/feeds/packages/lang/golang/golang/Makefile
++++ b/feeds/packages/lang/golang/golang/Makefile
+@@ -8,7 +8,7 @@
+ include $(TOPDIR)/rules.mk
+ 
+ GO_VERSION_MAJOR_MINOR:=1.21
+-GO_VERSION_PATCH:=2
++GO_VERSION_PATCH:=1
+ 
+ PKG_NAME:=golang
+ PKG_VERSION:=$(GO_VERSION_MAJOR_MINOR)$(if $(GO_VERSION_PATCH),.$(GO_VERSION_PATCH))
+@@ -20,7 +20,7 @@ GO_SOURCE_URLS:=https://dl.google.com/go/ \
+ 
+ PKG_SOURCE:=go$(PKG_VERSION).src.tar.gz
+ PKG_SOURCE_URL:=$(GO_SOURCE_URLS)
+-PKG_HASH:=45e59de173baec39481854490d665b726cec3e5b159f6b4172e5ec7780b2c201
++PKG_HASH:=bfa36bf75e9a1e9cbbdb9abcf9d1707e479bd3a07880a8ae3564caee5711cb99
+
+ 
+ PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
+ PKG_LICENSE:=BSD-3-Clause
