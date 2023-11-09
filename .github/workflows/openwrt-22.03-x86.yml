@@ -198,11 +198,14 @@ jobs:
     - name: Delete workflow runs
       uses: sdhz151/delete-workflow-runs@main
       with:
+        token: ${{ secrets.REPO_TOKEN }}
+        repository: ${{ github.repository }}
+        delete_workflow_pattern: X86_openwrt-23.05
         retain_days: 2
         keep_minimum_runs: 6
 
     - name: Remove old Releases
-      uses: dev-drprasad/delete-older-releases@v0.3.2
+      uses: dev-drprasad/delete-older-releases@v0.2.1
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
         keep_latest: 6
