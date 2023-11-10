@@ -208,6 +208,7 @@ jobs:
       uses: dev-drprasad/delete-older-releases@v0.2.1
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
+        repo: ${{ github.repository }}  
         keep_latest: 6
         delete_tags: true
       env:
