@@ -9,11 +9,6 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
-# Apply the patches
-git apply $GITHUB_WORKSPACE/patches/1netlink-diag.patch
-git apply $GITHUB_WORKSPACE/patches/2kmod-inet-diag.patch
-git apply $GITHUB_WORKSPACE/patches/3kernel4.10.patch
-git apply $GITHUB_WORKSPACE/patches/4fixloadingmodule.patch
 
 # Modify default IP
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/x86/Makefile
