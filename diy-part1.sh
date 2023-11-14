@@ -18,9 +18,9 @@ echo 'src-git helloworld https://github.com/fw876/helloworld;main' >>feeds.conf.
 echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
 # echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> "feeds.conf.default"
-echo "src-git pack https://github.com/sdhz153/packages.git;master" >> "feeds.conf.default"
+# echo "src-git pack https://github.com/sdhz153/packages.git;master" >> "feeds.conf.default"
 echo "src-git sbwml https://github.com/sbwml/luci-app-mosdns;v5" >> "feeds.conf.default"
-
+git clone https://github.com/sdhz153/packages.git -b master package/sdhz153
 # git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 # rm -rf package/mosdns/install.sh
 
