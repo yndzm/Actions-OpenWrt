@@ -1,0 +1,35 @@
+From 0ebc7159818acf40a8eada46058312d2aff0281d Mon Sep 17 00:00:00 2001
+From: Jeffery To <jeffery.to@gmail.com>
+Date: Mon, 13 Nov 2023 16:01:30 +0800
+Subject: [PATCH] golang: Update to 1.21.4
+
+Includes fixes for CVE-2023-45283 and CVE-2023-45284 (path/filepath:
+insecure parsing of Windows paths).
+
+Signed-off-by: Jeffery To <jeffery.to@gmail.com>
+---
+ lang/golang/golang/Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/feeds/packages/lang/golang/golang/Makefile b/feeds/packages/lang/golang/golang/Makefile
+index 094dea2b11e48..55da6587bd458 100644
+--- a/feeds/packages/lang/golang/golang/Makefile
++++ b/feeds/packages/lang/golang/golang/Makefile
+@@ -8,7 +8,7 @@
+ include $(TOPDIR)/rules.mk
+ 
+ GO_VERSION_MAJOR_MINOR:=1.21
+-GO_VERSION_PATCH:=3
++GO_VERSION_PATCH:=4
+ 
+ PKG_NAME:=golang
+ PKG_VERSION:=$(GO_VERSION_MAJOR_MINOR)$(if $(GO_VERSION_PATCH),.$(GO_VERSION_PATCH))
+@@ -20,7 +20,7 @@ GO_SOURCE_URLS:=https://dl.google.com/go/ \
+ 
+ PKG_SOURCE:=go$(PKG_VERSION).src.tar.gz
+ PKG_SOURCE_URL:=$(GO_SOURCE_URLS)
+-PKG_HASH:=186f2b6f8c8b704e696821b09ab2041a5c1ee13dcbc3156a13adcf75931ee488
++PKG_HASH:=47b26a83d2b65a3c1c1bcace273b69bee49a7a7b5168a7604ded3d26a37bd787
+ 
+ PKG_MAINTAINER:=Jeffery To <jeffery.to@gmail.com>
+ PKG_LICENSE:=BSD-3-Clause
