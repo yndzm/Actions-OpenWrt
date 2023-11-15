@@ -82,7 +82,19 @@ jobs:
         sudo rm -rf package/feeds/luci/luci-app-smartdns
         sudo rm -rf feeds/packages/net/smartdns
         sudo rm -rf package/feeds/packages/smartdns
-  
+
+    - name: Add Package
+      id: kenzok8
+      run: |
+       cd openwrt
+       sudo git init package/kenzok8 && cd package/kenzok8
+       sudo git remote add -f origin https://github.com/kenzok8/small-package.git
+       sudo git config core.sparsecheckout true
+       sudo echo "luci-app-smartdns" >> .git/info/sparse-checkout
+       sudo echo "smartdns" >> .git/info/sparse-checkout
+       sudo echo "redsocks2" >> .git/info/sparse-checkout
+       git pull origin main
+   
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
