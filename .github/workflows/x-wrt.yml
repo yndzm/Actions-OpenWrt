@@ -94,19 +94,8 @@ jobs:
        echo "luci-app-smartdns" >> .git/info/sparse-checkout
        echo "smartdns" >> .git/info/sparse-checkout
        echo "redsocks2" >> .git/info/sparse-checkout
-       git pull origin main
-
-    - name: Add openclash
-      id: openclash
-      run: |
-       cd openwrt
-       mkdir package/openclash
-       cd package/openclash
-       git init
-       git remote add -f origin https://github.com/vernesong/OpenClash.git
-       git config core.sparsecheckout true
        echo "luci-app-openclash" >> .git/info/sparse-checkout
-       git pull origin master
+       git pull origin main
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
