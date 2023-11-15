@@ -101,7 +101,7 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: update golang
+ #   - name: update golang
    #   run: |
    #     cd openwrt
     #    sudo rm -rf feeds/packages/lang/golang
@@ -109,7 +109,7 @@ jobs:
      #   git apply $GITHUB_WORKSPACE/patches/golang1.21.2.patch
       #  git apply $GITHUB_WORKSPACE/patches/Revertgolang1.patch
       #  git apply $GITHUB_WORKSPACE/patches/Revertgolang2.patch
-      run: cd openwrt && git apply $GITHUB_WORKSPACE/patches/golang1.21.4.patch
+    #  run: cd openwrt && git apply $GITHUB_WORKSPACE/patches/golang1.21.4.patch
 
     - name: Load custom configuration
       run: |
