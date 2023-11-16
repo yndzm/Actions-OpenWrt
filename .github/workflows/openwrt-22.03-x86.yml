@@ -87,7 +87,7 @@ jobs:
       id: kenzok8
       run: |
        cd openwrt
-       mkdir package/kenzok8
+       mkdir -p package/kenzok8
        cd package/kenzok8
        git init
        git remote add -f origin https://github.com/kenzok8/small-package.git
@@ -96,12 +96,13 @@ jobs:
        echo "smartdns" >> .git/info/sparse-checkout
        echo "redsocks2" >> .git/info/sparse-checkout
        git pull --depth 1 origin main
-   
+       git branch --set-upstream-to=origin/main master
+    
     - name: Add openclash
       id: openclash
       run: |
        cd openwrt
-       mkdir package/openclash
+       mkdir -p package/openclash
        cd package/openclash
        git init
        git remote add origin https://github.com/vernesong/OpenClash.git
