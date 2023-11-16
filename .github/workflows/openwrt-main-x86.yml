@@ -122,7 +122,6 @@ jobs:
        echo "mosdns" >> .git/info/sparse-checkout
        echo "v2dat" >> .git/info/sparse-checkout
        git pull --depth 1 origin v5
-       git branch --set-upstream-to=origin/v5 v5
    
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
