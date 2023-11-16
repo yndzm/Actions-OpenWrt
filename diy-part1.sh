@@ -19,7 +19,7 @@ echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-pa
 echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
 # echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> "feeds.conf.default"
 # echo "src-git pack https://github.com/sdhz153/packages.git;master" >> "feeds.conf.default"
-echo "src-git sbwml https://github.com/sbwml/luci-app-mosdns;v5" >> "feeds.conf.default"
+# echo "src-git sbwml https://github.com/sbwml/luci-app-mosdns;v5" >> "feeds.conf.default"
 
 # svn co https://github.com/kenzok8/small-package/trunk/redsocks2 package/diy/redsocks2
 # svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/diy/luci-app-openclash
