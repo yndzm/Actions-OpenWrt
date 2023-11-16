@@ -19,12 +19,12 @@ echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-pa
 echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> "feeds.conf.default"
 
 # svn co https://github.com/kenzok8/small-package/trunk/redsocks2 package/diy/redsocks2
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/diy/luci-app-openclash
+# svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/diy/luci-app-openclash
 # svn co https://github.com/kenzok8/small-package/trunk/luci-app-smartdns package/diy/luci-app-smartdns
 # svn co https://github.com/kenzok8/small-package/trunk/smartdns package/diy/smartdns
-svn co https://github.com/sbwml/luci-app-mosdns/trunk/luci-app-mosdns package/diy/luci-app-mosdns
-svn co https://github.com/sbwml/luci-app-mosdns/trunk/mosdns package/diy/mosdns
-svn co https://github.com/sbwml/luci-app-mosdns/trunk/v2dat package/diy/v2dat
+# svn co https://github.com/sbwml/luci-app-mosdns/trunk/luci-app-mosdns package/diy/luci-app-mosdns
+# svn co https://github.com/sbwml/luci-app-mosdns/trunk/mosdns package/diy/mosdns
+# svn co https://github.com/sbwml/luci-app-mosdns/trunk/v2dat package/diy/v2dat
 # svn co https://github.com/kenzok8/small-package/trunk/ipt2socks package/diy/ipt2socks
 # svn co https://github.com/kenzok8/small-package/trunk/microsocks package/diy/microsocks
 # svn co https://github.com/kenzok8/small-package/trunk/dns2socks package/diy/dns2socks
