@@ -74,28 +74,28 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: delete package
-      id: delete
-      run: |
-        cd openwrt
-        sudo rm -rf feeds/luci/applications/luci-app-smartdns
-        sudo rm -rf package/feeds/luci/luci-app-smartdns
-        sudo rm -rf feeds/packages/net/smartdns
-        sudo rm -rf package/feeds/packages/smartdns
+ #   - name: delete package
+ #     id: delete
+ #     run: |
+ #       cd openwrt
+ #       sudo rm -rf feeds/luci/applications/luci-app-smartdns
+ #       sudo rm -rf package/feeds/luci/luci-app-smartdns
+ #       sudo rm -rf feeds/packages/net/smartdns
+ #       sudo rm -rf package/feeds/packages/smartdns
 
-    - name: Add Package
-      id: kenzok8
-      run: |
-       cd openwrt
-       mkdir -p package/kenzok8 && cd package/kenzok8
-       git init
-       git remote add -f origin https://github.com/kenzok8/small-package.git
-       git config core.sparsecheckout true
-       echo "luci-app-smartdns" >> .git/info/sparse-checkout
-       echo "smartdns" >> .git/info/sparse-checkout
-       echo "redsocks2" >> .git/info/sparse-checkout
-       git pull --depth 1 origin main
-       git branch --set-upstream-to=origin/main master
+#    - name: Add Package
+ #     id: kenzok8
+ #     run: |
+#       cd openwrt
+#       mkdir -p package/kenzok8 && cd package/kenzok8
+#       git init
+#       git remote add -f origin https://github.com/kenzok8/small-package.git
+#       git config core.sparsecheckout true
+ #      echo "luci-app-smartdns" >> .git/info/sparse-checkout
+#       echo "smartdns" >> .git/info/sparse-checkout
+#       echo "redsocks2" >> .git/info/sparse-checkout
+#       git pull --depth 1 origin main
+#       git branch --set-upstream-to=origin/main master
    
     - name: Add openclash
       id: openclash
