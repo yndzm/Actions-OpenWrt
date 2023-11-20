@@ -84,7 +84,8 @@ jobs:
         git clone -b master https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
         # sudo rm -rf package/feeds/luci/luci-app-smartdns
         # sudo rm -rf package/feeds/packages/smartdns
-    
+        git clone -b main https://github.com/fw876/helloworld package/passwall
+        
     - name: Add passwall
       id: passwall
       run: |
