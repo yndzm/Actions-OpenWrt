@@ -87,8 +87,8 @@ jobs:
       id: passwall
       run: |
        cd openwrt
-       mkdir -p package/passwall/luci-app-passwall
-       cd package/passwall/luci-app-passwall
+       mkdir -p package/passwall
+       cd package/passwall
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall.git
        git config core.sparsecheckout true
