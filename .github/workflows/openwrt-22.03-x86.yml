@@ -82,23 +82,99 @@ jobs:
         sudo rm -rf feeds/packages/net/smartdns
         git clone -b master https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
         git clone -b master https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
- #       sudo rm -rf package/feeds/luci/luci-app-smartdns
- #       sudo rm -rf package/feeds/packages/smartdns
+        # sudo rm -rf package/feeds/luci/luci-app-smartdns
+        # sudo rm -rf package/feeds/packages/smartdns
+    
+    - name: Add passwall
+      id: passwall
+      run: |
+       cd openwrt
+       mkdir -p feeds/helloworld/luci-app-passwall
+       cd feeds/helloworld/luci-app-passwall
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall.git
+       git config core.sparsecheckout true
+       echo "luci-app-passwall" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
+    
+    - name: Add brook
+      id: passwall brook
+      run: |
+       cd openwrt
+       mkdir -p feeds/helloworld/brook
+       cd feeds/helloworld/brook
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
+       git config core.sparsecheckout true
+       echo "brook" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
+       
+    - name: Add pdnsd-alt
+      id: passwall pdnsd-alt
+      run: |
+       cd openwrt
+       mkdir -p feeds/helloworld/pdnsd-alt
+       cd feeds/helloworld/pdnsd-alt
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
+       git config core.sparsecheckout true
+       echo "pdnsd-alt" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
 
- #   - name: Add kenzok8
- #     id: kenzok8
- #     run: |
- #      cd openwrt
- #      mkdir -p package/kenzok8
- #      cd package/kenzok8
- #      git init
-#       git remote add -f origin https://github.com/kenzok8/small-package.git
- #      git config core.sparsecheckout true
- #      echo "luci-app-smartdns" >> .git/info/sparse-checkout
- #      echo "smartdns" >> .git/info/sparse-checkout
- #      echo "redsocks2" >> .git/info/sparse-checkout
- #      git pull --depth 1 origin main
- #      git branch --set-upstream-to=origin/main master
+    - name: Add sing-box
+      id: passwall sing-box
+      run: |
+       cd openwrt
+       mkdir -p feeds/helloworld/sing-box
+       cd feeds/helloworld/sing-box
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
+       git config core.sparsecheckout true
+       echo "sing-box" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
+       
+    - name: Add ssocks
+      id: passwall ssocks
+      run: |
+       cd openwrt
+       mkdir -p feeds/helloworld/ssocks
+       cd feeds/helloworld/ssocks
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
+       git config core.sparsecheckout true
+       echo "ssocks" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
+       
+    - name: Add trojan-go
+      id: passwall trojan-go
+      run: |
+       cd openwrt
+       mkdir -p feeds/helloworld/trojan-go
+       cd feeds/helloworld/trojan-go
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
+       git config core.sparsecheckout true
+       echo "trojan-go" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
+
+    - name: Add trojan-plus
+      id: passwall trojan-plus
+      run: |
+       cd openwrt
+       mkdir -p feeds/helloworld/trojan-plus
+       cd feeds/helloworld/trojan-plus
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
+       git config core.sparsecheckout true
+       echo "trojan-plus" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
     
     - name: Add openclash
       id: openclash
