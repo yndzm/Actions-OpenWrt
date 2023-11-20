@@ -89,8 +89,8 @@ jobs:
       id: passwall
       run: |
        cd openwrt
-       mkdir -p feeds/helloworld/luci-app-passwall
-       cd feeds/helloworld/luci-app-passwall
+       mkdir -p package/passwall/luci-app-passwall
+       cd package/passwall/luci-app-passwall
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall.git
        git config core.sparsecheckout true
@@ -102,8 +102,8 @@ jobs:
       id: passwall_brook
       run: |
        cd openwrt
-       mkdir -p feeds/helloworld/brook
-       cd feeds/helloworld/brook
+       mkdir -p package/passwall/brook
+       cd package/passwall/brook
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
        git config core.sparsecheckout true
@@ -115,8 +115,8 @@ jobs:
       id: passwall_pdnsd-alt
       run: |
        cd openwrt
-       mkdir -p feeds/helloworld/pdnsd-alt
-       cd feeds/helloworld/pdnsd-alt
+       mkdir -p package/passwall/pdnsd-alt
+       cd package/passwall/pdnsd-alt
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
        git config core.sparsecheckout true
@@ -128,8 +128,8 @@ jobs:
       id: passwall_sing-box
       run: |
        cd openwrt
-       mkdir -p feeds/helloworld/sing-box
-       cd feeds/helloworld/sing-box
+       mkdir -p package/passwall/sing-box
+       cd package/passwall/sing-box
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
        git config core.sparsecheckout true
@@ -141,8 +141,8 @@ jobs:
       id: passwall_ssocks
       run: |
        cd openwrt
-       mkdir -p feeds/helloworld/ssocks
-       cd feeds/helloworld/ssocks
+       mkdir -p package/passwall/ssocks
+       cd package/passwall/ssocks
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
        git config core.sparsecheckout true
@@ -154,8 +154,8 @@ jobs:
       id: passwall_trojan-go
       run: |
        cd openwrt
-       mkdir -p feeds/helloworld/trojan-go
-       cd feeds/helloworld/trojan-go
+       mkdir -p package/passwall/trojan-go
+       cd package/passwall/trojan-go
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
        git config core.sparsecheckout true
@@ -167,8 +167,8 @@ jobs:
       id: passwall_trojan-plus
       run: |
        cd openwrt
-       mkdir -p feeds/helloworld/trojan-plus
-       cd feeds/helloworld/trojan-plus
+       mkdir -p package/passwall/trojan-plus
+       cd package/passwall/trojan-plus
        git init
        git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
        git config core.sparsecheckout true
