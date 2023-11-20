@@ -99,7 +99,7 @@ jobs:
        git branch --set-upstream-to=origin/main master
     
     - name: Add brook
-      id: passwall brook
+      id: passwall_brook
       run: |
        cd openwrt
        mkdir -p feeds/helloworld/brook
@@ -112,7 +112,7 @@ jobs:
        git branch --set-upstream-to=origin/main master
        
     - name: Add pdnsd-alt
-      id: passwall pdnsd-alt
+      id: passwall_pdnsd-alt
       run: |
        cd openwrt
        mkdir -p feeds/helloworld/pdnsd-alt
@@ -125,7 +125,7 @@ jobs:
        git branch --set-upstream-to=origin/main master
 
     - name: Add sing-box
-      id: passwall sing-box
+      id: passwall_sing-box
       run: |
        cd openwrt
        mkdir -p feeds/helloworld/sing-box
@@ -138,7 +138,7 @@ jobs:
        git branch --set-upstream-to=origin/main master
        
     - name: Add ssocks
-      id: passwall ssocks
+      id: passwall_ssocks
       run: |
        cd openwrt
        mkdir -p feeds/helloworld/ssocks
@@ -151,7 +151,7 @@ jobs:
        git branch --set-upstream-to=origin/main master
        
     - name: Add trojan-go
-      id: passwall trojan-go
+      id: passwall_trojan-go
       run: |
        cd openwrt
        mkdir -p feeds/helloworld/trojan-go
@@ -164,7 +164,7 @@ jobs:
        git branch --set-upstream-to=origin/main master
 
     - name: Add trojan-plus
-      id: passwall trojan-plus
+      id: passwall_trojan-plus
       run: |
        cd openwrt
        mkdir -p feeds/helloworld/trojan-plus
