@@ -86,8 +86,6 @@ jobs:
         sudo rm -rf package/feeds/packages/mosdns
         git clone -b master https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
         git clone -b lede https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
-        # sudo rm -rf package/feeds/luci/luci-app-smartdns
-        # sudo rm -rf package/feeds/packages/smartdns
         git clone -b main https://github.com/fw876/helloworld package/passwall
         sudo rm -rf package/passwall/mosdns
         git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
@@ -96,7 +94,9 @@ jobs:
         git clone -b main https://github.com/xiaorouji/openwrt-passwall2.git package/passwall/a
         mv package/passwall/a/luci-app-passwall2 package/passwall/luci-app-passwall2
         sudo rm -rf package/passwall/a/
-        
+   #    sudo rm -rf package/feeds/luci/luci-app-smartdns
+   #    sudo rm -rf package/feeds/packages/smartdns
+    
     - name: Add brook
       id: passwall_brook
       run: |
