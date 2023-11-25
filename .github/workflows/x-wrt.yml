@@ -73,18 +73,23 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: add helloworld
-      id: helloworld
-      run: |
-         cd openwrt
+   # - name: delete smartdns
+     #  id: smartdns
+     #  run: |
+         # cd openwrt
          # sudo rm -rf feeds/luci/applications/luci-app-smartdns
          # sudo rm -rf package/feeds/luci/luci-app-smartdns
          # sudo rm -rf feeds/packages/net/smartdns
          # sudo rm -rf package/feeds/packages/smartdns
-         git clone -b main https://github.com/fw876/helloworld package/passwall
-         git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
-         mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
-         sudo rm -rf package/passwall/p/
+  
+    - name: add helloworld
+      id: helloworld
+      run: |
+        cd openwrt
+        git clone -b main https://github.com/fw876/helloworld package/passwall
+        git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
+        mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
+        sudo rm -rf package/passwall/p/
     
     - name: Add brook
       id: passwall_brook
