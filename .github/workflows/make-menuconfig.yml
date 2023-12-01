@@ -6,7 +6,7 @@
 #
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
-#连接到ssh终端后（开始） Ctrl + C 健
+# 连接到网页ssh终端后（开始） Ctrl + C 健
 # 配置好后退终端输入  exit
 
 name: Make Menuconfig
