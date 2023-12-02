@@ -64,6 +64,7 @@ jobs:
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
+
     - name: Add openclash
       id: openclash
       run: |
