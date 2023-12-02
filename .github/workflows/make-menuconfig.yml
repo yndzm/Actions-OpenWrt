@@ -59,10 +59,6 @@ jobs:
         git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
         mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
         git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
-        git clone -b master https://github.com/sdhz153/packages.git package/passwall/v
-        mv package/passwall/v/luci-app-vlmcsd package/passwall
-        mv package/passwall/v/vlmcsd package/passwall
-         sudo rm -rf package/passwall/v
         sudo rm -rf package/passwall/p/
         sudo rm -rf package/passwall/mosdns
 
