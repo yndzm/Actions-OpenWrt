@@ -20,7 +20,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-23.05
   CONFIG_FILE: .diffconfig
-  DIY_P1_SH: diy-part7.sh
+  DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part4.sh
 
 jobs:
@@ -50,6 +50,29 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+
+    - name: Add package
+      id: package
+      run: |
+        cd openwrt
+        git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
+        git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
+        mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
+        sudo rm -rf package/passwall/p/
+        sudo rm -rf package/passwall/mosdns
+
+    - name: Add homeproxy
+      id: homeproxy
+      run: |
+       cd openwrt
+       mkdir -p package/passwall/luci-app-homeproxy
+       cd package/passwall/luci-app-homeproxy
+       git init
+       git remote add origin https://github.com/douglarek/luci-app-homeproxy.git
+       git config core.sparsecheckout true
+       echo "luci-app-homeproxy" >> .git/info/sparse-checkout
+       git pull --depth 1 origin dev
+       git branch --set-upstream-to=origin/dev master
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
