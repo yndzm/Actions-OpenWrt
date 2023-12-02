@@ -87,6 +87,7 @@ jobs:
         git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
         mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
         sudo rm -rf package/passwall/mosdns
+        rm -rf package/passwall/p/
     #   sudo rm -rf package/feeds/luci/luci-app-smartdns
     #   sudo rm -rf package/feeds/packages/smartdns
     
