@@ -51,6 +51,21 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
+    - name: Add mosdns
+      id: mosdns
+      run: |
+       cd openwrt
+       mkdir -p package/mosdns
+       cd package/mosdns
+       git init
+       git remote add origin https://github.com/sbwml/luci-app-mosdns.git
+       git config core.sparsecheckout true
+       echo "luci-app-mosdns" >> .git/info/sparse-checkout
+       echo "mosdns" >> .git/info/sparse-checkout
+       echo "v2dat" >> .git/info/sparse-checkout
+       git pull --depth 1 origin v5
+       git branch --set-upstream-to=origin/v5 master
+       
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
