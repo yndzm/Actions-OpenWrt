@@ -83,6 +83,7 @@ jobs:
         mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
         git clone -b main https://github.com/xiaorouji/openwrt-passwall2.git package/passwall/a
         mv package/passwall/a/luci-app-passwall2 package/passwall/luci-app-passwall2
+        git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
         rm -rf package/passwall/p/
         rm -rf package/passwall/a/
     
