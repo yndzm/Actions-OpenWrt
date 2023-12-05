@@ -6,7 +6,10 @@
 #
 # https://github.com/P3TERX/Actions-OpenWrt
 # Description: Build OpenWrt using GitHub Actions
-#
+# 开始 ctrl + C 键  
+# cd openwrt && make menuconfig
+# 结束 ctrl + D 键
+# 
 
 name: Make Menuconfig
 
