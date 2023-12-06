@@ -60,20 +60,8 @@ jobs:
         cd openwrt
         git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
         git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/luci-app-homeproxy
-
-    - name: Add passwall
-      id: passwall
-      run: |
-       cd openwrt
-       mkdir -p package/passwall/app-passwall
-       cd package/passwall/app-passwall
-       git init
-       git remote add origin https://github.com/immortalwrt/luci.git
-       git config core.sparsecheckout true
-       echo "applications/luci-app-passwall" >> .git/info/sparse-checkout
-       git pull --depth 1 origin master
-       git branch --set-upstream-to=origin/master master
-       
+        git clone -b master https://github.com/sdhz153/luci-app-passwall.git  package/passwall/luci-app-passwall
+    
     - name: Add mosdns
       id: mosdns
       run: |
