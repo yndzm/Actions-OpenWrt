@@ -58,8 +58,8 @@ jobs:
       id: delete
       run: |
         cd openwrt
-        git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
         git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
+        git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
 
     - name: Add passwall
       id: passwall
