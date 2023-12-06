@@ -18,8 +18,8 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
-  REPO_BRANCH: openwrt-23.05
-  CONFIG_FILE: diff.config
+  REPO_BRANCH: main
+  CONFIG_FILE: main.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part4.sh
 
@@ -58,8 +58,8 @@ jobs:
       id: delete
       run: |
         cd openwrt
-        git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/luci-app-homeproxy
-        
+        git clone -b main https://github.com/fw876/helloworld package/helloworld
+
     - name: Add mosdns
       id: mosdns
       run: |
@@ -91,13 +91,13 @@ jobs:
         limit-access-to-actor: false
 
     - name: Make diffconfig
-      run: cd openwrt && ./scripts/diffconfig.sh > diff.config
+      run: cd openwrt && ./scripts/diffconfig.sh > main.config
   
     - name: Upload config
       uses: actions/upload-artifact@main
       with:
         name: config
-        path: openwrt/diff.config
+        path: openwrt/main.config
 
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@main
