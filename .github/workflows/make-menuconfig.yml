@@ -58,10 +58,8 @@ jobs:
       id: delete
       run: |
         cd openwrt
-        git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
         git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/luci-app-homeproxy
-        git clone -b master https://github.com/sdhz153/luci-app-passwall.git  package/passwall/luci-app-passwall
-    
+        
     - name: Add mosdns
       id: mosdns
       run: |
