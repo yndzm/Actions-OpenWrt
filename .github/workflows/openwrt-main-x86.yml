@@ -82,6 +82,7 @@ jobs:
         git clone -b main https://github.com/sdhz153/openwrt-passwall.git package/passwall/p
         mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
         rm -rf package/passwall/p/
+        git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
         
     - name: Add mosdns
       id: mosdns
