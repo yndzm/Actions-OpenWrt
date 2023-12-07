@@ -4,13 +4,13 @@ Date: Thu, 7 Dec 2023 12:26:04 +0800
 Subject: [PATCH] luci-app-passwall: fix tproxy dependencies
 
 ---
- luci-app-passwall/Makefile | 29 +----------------------------
+ package/passwall/p/luci-app-passwall/Makefile | 29 +----------------------------
  1 file changed, 1 insertion(+), 28 deletions(-)
 
-diff --git a/luci-app-passwall/Makefile b/luci-app-passwall/Makefile
+diff --git a/package/passwall/p/luci-app-passwall/Makefile b/package/passwall/p/luci-app-passwall/Makefile
 index ffee7c6c72..e5385abcd7 100644
---- a/luci-app-passwall/Makefile
-+++ b/luci-app-passwall/Makefile
+--- a/package/passwall/p/luci-app-passwall/Makefile
++++ b/package/passwall/p/luci-app-passwall/Makefile
 @@ -10,8 +10,6 @@ PKG_VERSION:=4.71-3
  PKG_RELEASE:=
  
