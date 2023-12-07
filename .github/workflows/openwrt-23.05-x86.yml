@@ -217,7 +217,7 @@ jobs:
       with:
         token: ${{ secrets.REPO_TOKEN }}
         repository: ${{ github.repository }}
-        delete_workflow_pattern: X86_openwrt-23.05
+     #   delete_workflow_pattern: X86_openwrt-23.05
         retain_days: 0
         keep_minimum_runs: 1
 
