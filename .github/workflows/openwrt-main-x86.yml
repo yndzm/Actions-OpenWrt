@@ -81,7 +81,6 @@ jobs:
         git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
         git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
         git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
-        git apply $GITHUB_WORKSPACE/patches/FixTproxyDependencies.patch
         
     - name: Add mosdns
       id: mosdns
@@ -101,6 +100,9 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
+    - name: apply FixTproxyDependencies
+      run: cd openwrt && git apply $GITHUB_WORKSPACE/patches/FixTproxyDependencies.patch
+    
    # - name: update golang
    #   run: |
    #     cd openwrt
