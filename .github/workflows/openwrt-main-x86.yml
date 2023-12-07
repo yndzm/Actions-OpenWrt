@@ -26,7 +26,7 @@ env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: main.config
+  CONFIG_FILE: config/s/opmain/.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part6.sh
   UPLOAD_BIN_DIR: false
@@ -78,8 +78,11 @@ jobs:
       id: packages
       run: |
         cd openwrt
-        git clone -b main https://github.com/fw876/helloworld package/helloworl
-
+        git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
+        git clone -b main https://github.com/sdhz153/openwrt-passwall.git package/passwall/p
+        mv package/passwall/p/luci-app-passwall package/passwall/luci-app-passwall
+        rm -rf package/passwall/p/
+        
     - name: Add mosdns
       id: mosdns
       run: |
