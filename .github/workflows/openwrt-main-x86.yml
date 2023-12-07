@@ -81,7 +81,20 @@ jobs:
         git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
         git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
         git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
-        
+
+    - name: Add openclash
+      id: openclash
+      run: |
+       cd openwrt
+       mkdir -p package/openclash
+       cd package/openclash
+       git init
+       git remote add origin https://github.com/vernesong/OpenClash.git
+       git config core.sparsecheckout true
+       echo "luci-app-openclash" >> .git/info/sparse-checkout
+       git pull --depth 1 origin master
+       git branch --set-upstream-to=origin/master master
+       
     - name: Add mosdns
       id: mosdns
       run: |
@@ -97,9 +110,12 @@ jobs:
        git pull --depth 1 origin v5
        git branch --set-upstream-to=origin/v5 master
 
-    - name: apply FixTproxyDependencies
-      run: cd openwrt && git apply $GITHUB_WORKSPACE/patches/FixTproxyDependencies.patch
-    
+    - name: apply patches
+      run: |
+       cd openwrt 
+       git apply $GITHUB_WORKSPACE/patches/FixTproxyDependencies.patch
+       git apply $GITHUB_WORKSPACE/patches/openclash.patch
+      
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
       
