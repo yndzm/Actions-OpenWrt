@@ -13,8 +13,8 @@ name: X86_lede_master
 on:
  # repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 0 20 * * *
+#  schedule:
+#    - cron: 0 20 * * *
   repository_dispatch:
     inputs:
       ssh:
