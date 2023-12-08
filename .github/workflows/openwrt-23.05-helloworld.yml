@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: X86_openwrt-23.05-helloworld
+name: openwrt-23.05-helloworld
 
 on:
  # repository_dispatch:
@@ -74,7 +74,7 @@ jobs:
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-     - name: add package
+    - name: add package
       id: packages
       run: |
         cd openwrt
@@ -94,7 +94,7 @@ jobs:
        echo "v2dat" >> .git/info/sparse-checkout
        git pull --depth 1 origin v5
        git branch --set-upstream-to=origin/v5 master
-      
+ 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
@@ -213,7 +213,6 @@ jobs:
       with:
         token: ${{ secrets.REPO_TOKEN }}
         repository: ${{ github.repository }}
-     #   delete_workflow_pattern: X86_openwrt-23.05
         retain_days: 0
         keep_minimum_runs: 1
 
