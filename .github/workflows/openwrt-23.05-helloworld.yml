@@ -80,7 +80,26 @@ jobs:
         cd openwrt
         git clone -b main https://github.com/fw876/helloworld package/helloworld
         rm -rf package/helloworld/mosdns
-        
+        git clone -b main https://github.com/xiaorouji/openwrt-passwall2.git package/passwall/p2
+
+    - name: Add passwall app
+      id: passwall
+      run: |
+       cd openwrt
+       mkdir -p package/helloworld/passwall
+       cd package/helloworld/passwall
+       git init
+       git remote add origin https://github.com/xiaorouji/openwrt-passwall-packages.git
+       git config core.sparsecheckout true
+       echo "brook" >> .git/info/sparse-checkout
+       echo "pdnsd-alt" >> .git/info/sparse-checkout
+       echo "sing-box" >> .git/info/sparse-checkout
+       echo "ssocks" >> .git/info/sparse-checkout
+       echo "trojan-go" >> .git/info/sparse-checkout
+       echo "trojan-plus" >> .git/info/sparse-checkout
+       git pull --depth 1 origin main
+       git branch --set-upstream-to=origin/main master
+
     - name: Add mosdns
       id: mosdns
       run: |
@@ -110,7 +129,11 @@ jobs:
        git branch --set-upstream-to=origin/master master
 
     - name: apply patches
-      run: cd openwrt && git apply $GITHUB_WORKSPACE/patches/12737.patch
+      id: patches
+      run: |
+       cd openwrt
+       git apply $GITHUB_WORKSPACE/patches/12737.patch
+       git apply $GITHUB_WORKSPACE/patches/hpasswall2.patch
 
     - name: Add app vlmcsd
       id: appvlmcsd
