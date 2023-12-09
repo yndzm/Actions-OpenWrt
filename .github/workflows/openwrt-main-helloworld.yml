@@ -79,6 +79,7 @@ jobs:
       run: |
         cd openwrt
         git clone -b main https://github.com/fw876/helloworld package/helloworld
+        rm -rf package/helloworld/mosdns
        
     - name: Add mosdns
       id: mosdns
