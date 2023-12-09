@@ -43,7 +43,7 @@ index 857d54858..d30f6d009 100644
  	DEPENDS:=+dnsmasq-full +coreutils +coreutils-nohup +bash +curl +ca-certificates +ipset +ip-full \
 -	+libcap +libcap-bin +ruby +ruby-yaml +kmod-tun +unzip
 +	+libcap +libcap-bin +ruby +ruby-yaml +kmod-tun +unzip \
-+ +kmod-inet-diag +luci-compat +kmod-ipt-nat +iptables-mod-tproxy +iptables-mod-extra
++	+kmod-inet-diag +luci-compat +kmod-ipt-nat +iptables-mod-tproxy +iptables-mod-extra
  	MAINTAINER:=vernesong
  endef
  
