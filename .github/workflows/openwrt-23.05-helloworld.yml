@@ -81,6 +81,7 @@ jobs:
         git clone -b main https://github.com/fw876/helloworld package/helloworld
         rm -rf package/helloworld/mosdns
         git clone -b main https://github.com/xiaorouji/openwrt-passwall2.git package/passwall/p2
+        git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
 
     - name: Add passwall app
       id: passwall
@@ -134,7 +135,8 @@ jobs:
        cd openwrt
        git apply $GITHUB_WORKSPACE/patches/12737.patch
        git apply $GITHUB_WORKSPACE/patches/hpasswall2.patch
-
+       git apply $GITHUB_WORKSPACE/patches/iptablespasswall.patch
+ 
     - name: Add app vlmcsd
       id: appvlmcsd
       run: |
