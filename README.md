@@ -1,3 +1,18 @@
+Crontab 表达式规则：
+注：Linux中没有second，最小是miniute。
+*    *    *    *    *
+-    -    -    -    -
+|    |    |    |    |
+|    |    |    |    +----- 星期中星期几 (0 - 6) (星期天 为0)
+|    |    |    +---------- 月份 (1 - 12)
+|    |    +--------------- 一个月中的第几天 (1 - 31)
+|    +-------------------- 小时 (0 - 23)
++------------------------- 分钟 (0 - 59)
+例：30 21 * * *
+表示每晚21:30分执行
+
+**在线crontab** https://tooltt.com/crontab/c/86.html
+
 **English** | [中文](https://p3terx.com/archives/build-openwrt-with-github-actions.html)
 
 # Actions-OpenWrt
