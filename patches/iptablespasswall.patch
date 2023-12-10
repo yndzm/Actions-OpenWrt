@@ -1,0 +1,87 @@
+From 45b17743bf39cbbe16fbc2b49e994d2c6f16a5b1 Mon Sep 17 00:00:00 2001
+From: sdhz151 <yanghui140@gmail.com>
+Date: Sun, 10 Dec 2023 10:11:15 +0800
+Subject: [PATCH] Update Makefile
+
+---
+ package/passwall/p/luci-app-passwall/Makefile | 35 ++++-------------------------------
+ 1 file changed, 4 insertions(+), 31 deletions(-)
+
+diff --git a/package/passwall/p/luci-app-passwall/Makefile b/package/passwall/p/luci-app-passwall/Makefile
+index ffee7c6c72..5882e9a195 100644
+--- a/package/passwall/p/luci-app-passwall/Makefile
++++ b/package/passwall/p/luci-app-passwall/Makefile
+@@ -10,8 +10,6 @@ PKG_VERSION:=4.71-3
+ PKG_RELEASE:=
+ 
+ PKG_CONFIG_DEPENDS:= \
+-	CONFIG_PACKAGE_$(PKG_NAME)_Iptables_Transparent_Proxy \
+-	CONFIG_PACKAGE_$(PKG_NAME)_Nftables_Transparent_Proxy \
+ 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_Brook \
+ 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_Haproxy \
+ 	CONFIG_PACKAGE_$(PKG_NAME)_INCLUDE_Hysteria \
+@@ -37,6 +35,7 @@ LUCI_PKGARCH:=all
+ LUCI_DEPENDS:=+coreutils +coreutils-base64 +coreutils-nohup +curl \
+ 	+chinadns-ng +dns2socks +dns2tcp +ip-full +libuci-lua +lua +luci-compat +luci-lib-jsonc \
+ 	+microsocks +resolveip +tcping +unzip \
++        +iptables-zz-legacy +mod-conntrack-extra +iptables-mod-iprange +iptables-mod-socket +kmod-nft-tproxy +kmod-ipt-nat \
+ 	+PACKAGE_$(PKG_NAME)_INCLUDE_Brook:brook \
+ 	+PACKAGE_$(PKG_NAME)_INCLUDE_Haproxy:haproxy \
+ 	+PACKAGE_$(PKG_NAME)_INCLUDE_Hysteria:hysteria \
+@@ -63,32 +62,6 @@ LUCI_DEPENDS:=+coreutils +coreutils-base64 +coreutils-nohup +curl \
+ define Package/$(PKG_NAME)/config
+ menu "Configuration"
+ 
+-config PACKAGE_$(PKG_NAME)_Iptables_Transparent_Proxy
+-	bool "Iptables Transparent Proxy"
+-	select PACKAGE_dnsmasq-full
+-	select PACKAGE_ipset
+-	select PACKAGE_ipt2socks
+-	select PACKAGE_iptables
+-	select PACKAGE_iptables-zz-legacy
+-	select PACKAGE_iptables-mod-conntrack-extra
+-	select PACKAGE_iptables-mod-iprange
+-	select PACKAGE_iptables-mod-socket
+-	select PACKAGE_iptables-mod-tproxy
+-	select PACKAGE_kmod-ipt-nat
+-	depends on PACKAGE_$(PKG_NAME)
+-	default y if ! PACKAGE_firewall4
+-
+-config PACKAGE_$(PKG_NAME)_Nftables_Transparent_Proxy
+-	bool "Nftables Transparent Proxy"
+-	select PACKAGE_dnsmasq-full
+-	select PACKAGE_ipt2socks
+-	select PACKAGE_nftables
+-	select PACKAGE_kmod-nft-socket
+-	select PACKAGE_kmod-nft-tproxy
+-	select PACKAGE_kmod-nft-nat
+-	depends on PACKAGE_$(PKG_NAME)
+-	default y if PACKAGE_firewall4
+-
+ config PACKAGE_$(PKG_NAME)_INCLUDE_Brook
+ 	bool "Include Brook"
+ 	default n
+@@ -99,12 +72,12 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_Haproxy
+ 
+ config PACKAGE_$(PKG_NAME)_INCLUDE_Hysteria
+ 	bool "Include Hysteria"
+-	default n
++	default y
+ 
+ config PACKAGE_$(PKG_NAME)_INCLUDE_NaiveProxy
+ 	bool "Include NaiveProxy"
+ 	depends on !(arc||(arm&&TARGET_gemini)||armeb||mips||mips64||powerpc)
+-	default n
++	default y
+ 
+ config PACKAGE_$(PKG_NAME)_INCLUDE_Shadowsocks_Libev_Client
+ 	bool "Include Shadowsocks Libev Client"
+@@ -155,7 +128,7 @@ config PACKAGE_$(PKG_NAME)_INCLUDE_tuic_client
+ 
+ config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Geodata
+ 	bool "Include V2ray_Geodata"
+-	default n
++	default y
+ 
+ config PACKAGE_$(PKG_NAME)_INCLUDE_V2ray_Plugin
+ 	bool "Include V2ray-Plugin (Shadowsocks Plugin)"
