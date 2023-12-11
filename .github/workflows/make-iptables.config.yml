@@ -177,9 +177,9 @@ jobs:
        mv package/vlmcsd/net/vlmcsd/* package/vlmcsd
        rm -rf package/vlmcsd/net
        rm -rf package/vlmcsd/.git
-       mv feeds/luci/applications/luci-app-ttyd/applications/luci-app-ttyd/* feeds/luci/applications/luci-app-ttyd
-       rm -rf feeds/luci/applications/luci-app-ttyd/applications
-       rm -rf feeds/luci/applications/luci-app-ttyd/.git
+       sudo mv feeds/luci/applications/luci-app-ttyd/applications/luci-app-ttyd/* feeds/luci/applications/luci-app-ttyd
+       sudo rm -rf feeds/luci/applications/luci-app-ttyd/applications
+       sudo rm -rf feeds/luci/applications/luci-app-ttyd/.git
        ln -sf ../../../feeds/luci/applications/luci-app-ttyd package/feeds/luci/luci-app-ttyd
 
        
