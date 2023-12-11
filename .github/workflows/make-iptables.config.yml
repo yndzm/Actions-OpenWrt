@@ -141,6 +141,30 @@ jobs:
        echo "net/vlmcsd" >> .git/info/sparse-checkout
        git pull --depth 1 origin openwrt-23.05
 
+    - name: Add app-ttyd
+      id: app-ttyd
+      run: |
+       cd openwrt
+       mkdir -p feeds/luci/applications/luci-app-ttyd
+       cd feeds/luci/applications/luci-app-ttyd
+       git init
+       git remote add origin https://github.com/coolsnowwolf/luci.git
+       git config core.sparsecheckout true
+       echo "applications/luci-app-ttyd" >> .git/info/sparse-checkout
+       git pull --depth 1 origin master
+
+    - name: Add ttyd
+      id: ttyd
+      run: |
+       cd openwrt
+       mkdir -p package/utils/ttyd
+       cd package/utils/ttyd
+       git init
+       git remote add origin https://github.com/coolsnowwolf/packages.git
+       git config core.sparsecheckout true
+       echo "utils/ttyd" >> .git/info/sparse-checkout
+       git pull --depth 1 origin master
+
     - name: Soft connection vlmcsd
       id: soft
       run: |
@@ -153,6 +177,11 @@ jobs:
        mv package/vlmcsd/net/vlmcsd/* package/vlmcsd
        rm -rf package/vlmcsd/net
        rm -rf package/vlmcsd/.git
+       mv feeds/luci/applications/luci-app-ttyd/applications/luci-app-ttyd/* feeds/luci/applications/luci-app-ttyd
+       rm -rf feeds/luci/applications/luci-app-ttyd/applications
+       rm -rf feeds/luci/applications/luci-app-ttyd/.git
+       ln -sf ../../../feeds/luci/applications/luci-app-ttyd package/feeds/luci/luci-app-ttyd
+
        
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
