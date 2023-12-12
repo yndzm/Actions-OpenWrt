@@ -80,7 +80,8 @@ jobs:
         cd openwrt
         git clone -b main https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
         git clone -b main https://github.com/xiaorouji/openwrt-passwall.git package/passwall/p
-        git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
+        git clone -b master https://github.com/chenmozhijin/luci-app-adguardhome.git package/passwall/luci-app-adguardhome
+ #       git clone -b dev https://github.com/douglarek/luci-app-homeproxy.git package/passwall/luci-app-homeproxy
  
     - name: Add openclash
       id: openclash
@@ -116,42 +117,42 @@ jobs:
        git apply $GITHUB_WORKSPACE/patches/nftables_passwall.patch
        git apply $GITHUB_WORKSPACE/patches/nftables_openclash.patch
 
-    - name: Add app vlmcsd
-      id: appvlmcsd
-      run: |
-       cd openwrt
-       mkdir -p feeds/luci/applications/luci-app-vlmcsd
-       cd feeds/luci/applications/luci-app-vlmcsd
-       git init
-       git remote add origin https://github.com/immortalwrt/luci.git
-       git config core.sparsecheckout true
-       echo "applications/luci-app-vlmcsd" >> .git/info/sparse-checkout
-       git pull --depth 1 origin openwrt-23.05
+#    - name: Add app vlmcsd
+#      id: appvlmcsd
+#      run: |
+#       cd openwrt
+#       mkdir -p feeds/luci/applications/luci-app-vlmcsd
+#       cd feeds/luci/applications/luci-app-vlmcsd
+#       git init
+#       git remote add origin https://github.com/immortalwrt/luci.git
+#       git config core.sparsecheckout true
+#       echo "applications/luci-app-vlmcsd" >> .git/info/sparse-checkout
+#       git pull --depth 1 origin openwrt-23.05
 
-    - name: Add vlmcsd
-      id: vlmcsd
-      run: |
-       cd openwrt
-       mkdir -p package/vlmcsd
-       cd package/vlmcsd
-       git init
-       git remote add origin https://github.com/immortalwrt/packages.git
-       git config core.sparsecheckout true
-       echo "net/vlmcsd" >> .git/info/sparse-checkout
-       git pull --depth 1 origin openwrt-23.05
+#    - name: Add vlmcsd
+#      id: vlmcsd
+#      run: |
+#       cd openwrt
+#       mkdir -p package/vlmcsd
+#       cd package/vlmcsd
+#       git init
+#       git remote add origin https://github.com/immortalwrt/packages.git
+#       git config core.sparsecheckout true
+#       echo "net/vlmcsd" >> .git/info/sparse-checkout
+#       git pull --depth 1 origin openwrt-23.05
 
-    - name: Soft connection vlmcsd
-      id: soft
-      run: |
-       cd openwrt
-       mkdir -p package/feeds/luci
-       mv feeds/luci/applications/luci-app-vlmcsd/applications/luci-app-vlmcsd/* feeds/luci/applications/luci-app-vlmcsd
-       rm -rf feeds/luci/applications/luci-app-vlmcsd/applications
-       rm -rf feeds/luci/applications/luci-app-vlmcsd/.git
-       ln -sf ../../../feeds/luci/applications/luci-app-vlmcsd package/feeds/luci/luci-app-vlmcsd
-       mv package/vlmcsd/net/vlmcsd/* package/vlmcsd
-       rm -rf package/vlmcsd/net
-       rm -rf package/vlmcsd/.git
+#    - name: Soft connection vlmcsd
+#      id: soft
+#      run: |
+#       cd openwrt
+#       mkdir -p package/feeds/luci
+#       mv feeds/luci/applications/luci-app-vlmcsd/applications/luci-app-vlmcsd/* feeds/luci/applications/luci-app-vlmcsd
+#       rm -rf feeds/luci/applications/luci-app-vlmcsd/applications
+#       rm -rf feeds/luci/applications/luci-app-vlmcsd/.git
+#       ln -sf ../../../feeds/luci/applications/luci-app-vlmcsd package/feeds/luci/luci-app-vlmcsd
+#       mv package/vlmcsd/net/vlmcsd/* package/vlmcsd
+#       rm -rf package/vlmcsd/net
+#       rm -rf package/vlmcsd/.git
        
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
